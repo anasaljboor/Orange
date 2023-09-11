@@ -12,7 +12,7 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    sh 'docker build -t anasaljboor/anas:v2'
+                    sh 'docker build . -t anasaljboor/anas:v2'
                 }
             }
         }
@@ -26,6 +26,7 @@ pipeline {
         stage('Push Docker Image') {
             steps {
                 script {
+                    sh 'cat logindocker.txt | docker login --username  anasaljboor --password-stdin'
                     sh 'docker push anasaljboor/anas:v2'
                 }
             }
