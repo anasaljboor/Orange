@@ -1,10 +1,11 @@
 pipeline {
     agent any
     stages {
-        stage('Pull Docker Image') {
+        stage('Git Checkout') {
             steps {
                 script {
-                    sh 'docker pull anasaljboor/anas:v2'
+                    git branch: 'main', credentialsId: '53be62b7-ea77-4c19-a4c1-1b58ec4eb929', url: 'https://github.com/anasaljboor/Orange.git' 
+     
                 }
             }
         }
@@ -20,11 +21,6 @@ pipeline {
                 script {
                     sh 'docker run -d anasaljboor/anas:v2'
                 }
-            }
-        }
-        stage('Test') {
-            steps {
-                echo 'Running tests..'
             }
         }
         stage('Push Docker Image') {
