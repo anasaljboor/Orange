@@ -16,13 +16,6 @@ pipeline {
                 }
             }
         }
-        stage('Run') {
-            steps {
-                script {
-                    sh 'docker run -d anasaljboor/anas:v2'
-                }
-            }
-        }
         stage('Push Docker Image') {
             steps {
                 script {
