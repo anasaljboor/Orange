@@ -27,8 +27,8 @@ pipeline {
         stage('Deploy to Kubernetes') {
             steps {
                 script {
-                    sh 'kubectl apply -f deployments.yml --config kubeconfig'
-                    sh 'kubectl apply -f svc-nodeportvip.yml --config kubeconfig'
+                    sh 'kubectl apply -f deployments.yml --kubeconfig kubeconfig'
+                    sh 'kubectl apply -f svc-nodeportvip.yml --kubeconfig kubeconfig'
                 }
             }
         }
